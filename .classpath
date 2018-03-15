@@ -29,5 +29,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Leandro/Downloads/hibernate-validator-6.0.8.Final/dist/lib/required/classmate-1.3.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leandro/Downloads/hibernate-validator-6.0.8.Final/dist/lib/required/javax.el-3.0.1-b09.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leandro/Downloads/hibernate-validator-6.0.8.Final/dist/lib/required/jboss-logging-3.3.2.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leandro/Downloads/hibernate-validator-6.0.8.Final/dist/lib/required/validation-api-2.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Leandro/Downloads/hibernate-validator-6.0.8.Final/dist/hibernate-validator-6.0.8.Final.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
