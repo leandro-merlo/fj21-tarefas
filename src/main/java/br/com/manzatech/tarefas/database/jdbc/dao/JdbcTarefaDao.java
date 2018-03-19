@@ -18,7 +18,7 @@ public class JdbcTarefaDao extends GenericDao<Tarefa> {
 	public Long adiciona(Tarefa tarefa) {
 		String sql = "insert into tarefa " + "(descricao)" + " values (?)";
 		try {
-			// prepared statement para inserção
+			// prepared statement para inserï¿½ï¿½o
 			PreparedStatement stmt = this.conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			// seta os valores
 			stmt.setString(1, tarefa.getDescricao());
@@ -52,11 +52,13 @@ public class JdbcTarefaDao extends GenericDao<Tarefa> {
 				tarefa.setFinalizado(rs.getBoolean("finalizado"));
 
 				Date date = rs.getDate("dataFinalizacao");
-				Calendar df = Calendar.getInstance();
-				df.setTime(date);
+				if (null != date) {
+					Calendar df = Calendar.getInstance();
+					df.setTime(date);
+					tarefa.setDataFinalizacao(df);
+				}
 
-				tarefa.setDataFinalizacao(df);
-				// montando a data através do Calendar
+				// montando a data atravï¿½s do Calendar
 				tarefas.add(tarefa);
 			}
 			rs.close();
@@ -69,42 +71,43 @@ public class JdbcTarefaDao extends GenericDao<Tarefa> {
 
 	@Override
 	public void remove(Tarefa tarefa) {
-        try {
-            PreparedStatement stmt = conn.prepareStatement("delete " + "from tarefa where id=?");
-            stmt.setLong(1, tarefa.getId());
-            stmt.execute();
-            stmt.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+		try {
+			PreparedStatement stmt = conn.prepareStatement("delete " + "from tarefa where id=?");
+			stmt.setLong(1, tarefa.getId());
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
 	public void altera(Tarefa tarefa) {
-        String sql = "update tarefa set descricao=?, finalizado=?, dataFinalizacao=? where id=?";
-        try {
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, tarefa.getDescricao());
-            stmt.setBoolean(2, tarefa.isFinalizado());
-            stmt.setDate(3, new java.sql.Date(tarefa.getDataFinalizacao().getTimeInMillis()));
-            stmt.setLong(4, tarefa.getId());
-            stmt.execute();
-            stmt.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+		String sql = "update tarefa set descricao=?, finalizado=?, dataFinalizacao=? where id=?";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, tarefa.getDescricao());
+			stmt.setBoolean(2, tarefa.isFinalizado());
+			stmt.setDate(3, new java.sql.Date(tarefa.getDataFinalizacao().getTimeInMillis()));
+			stmt.setLong(4, tarefa.getId());
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
 	public Tarefa busca(Long id) {
-        String sql = "select * from contatos where id = ?";
-        try {
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setLong(1, id);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                Tarefa tarefa = new Tarefa();
-                tarefa.setId(rs.getLong("id"));;
+		String sql = "select * from contatos where id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setLong(1, id);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				Tarefa tarefa = new Tarefa();
+				tarefa.setId(rs.getLong("id"));
+				;
 				tarefa.setDescricao(rs.getString("descricao"));
 				tarefa.setFinalizado(rs.getBoolean("finalizado"));
 
@@ -113,12 +116,12 @@ public class JdbcTarefaDao extends GenericDao<Tarefa> {
 				df.setTime(date);
 
 				tarefa.setDataFinalizacao(df);
-                return tarefa;
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
-        return null;
+				return tarefa;
+			}
+		} catch (SQLException ex) {
+			throw new RuntimeException(ex);
+		}
+		return null;
 
 	}
 

@@ -1,7 +1,7 @@
-br\com\manzatech\tarefas\controllers\OlaMundoController.class
-br\com\manzatech\tarefas\database\jdbc\DatabaseSettings.class
-br\com\manzatech\tarefas\controllers\TarefasController.class
-br\com\manzatech\tarefas\models\Tarefa.class
-br\com\manzatech\tarefas\database\jdbc\dao\GenericDao.class
-br\com\manzatech\tarefas\database\jdbc\dao\JdbcTarefaDao.class
-br\com\manzatech\tarefas\database\jdbc\ConnectionFactory.class
+br/com/manzatech/tarefas/controllers/TarefasController.class
+br/com/manzatech/tarefas/database/jdbc/dao/JdbcTarefaDao.class
+br/com/manzatech/tarefas/models/Tarefa.class
+br/com/manzatech/tarefas/controllers/OlaMundoController.class
+br/com/manzatech/tarefas/database/jdbc/ConnectionFactory.class
+br/com/manzatech/tarefas/database/jdbc/dao/GenericDao.class
+br/com/manzatech/tarefas/database/jdbc/DatabaseSettings.class
