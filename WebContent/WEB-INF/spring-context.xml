@@ -11,6 +11,7 @@
 			http://www.springframework.org/schema/context/spring-context.xsd">
 			
 	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
 	<context:component-scan base-package="br.com.manzatech.tarefas" />
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />

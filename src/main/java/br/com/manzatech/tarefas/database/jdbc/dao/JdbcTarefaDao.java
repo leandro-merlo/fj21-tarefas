@@ -88,7 +88,7 @@ public class JdbcTarefaDao extends GenericDao<Tarefa> {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, tarefa.getDescricao());
 			stmt.setBoolean(2, tarefa.isFinalizado());
-			stmt.setDate(3, new java.sql.Date(tarefa.getDataFinalizacao().getTimeInMillis()));
+			stmt.setDate(3, null != tarefa.getDataFinalizacao() ? new java.sql.Date(tarefa.getDataFinalizacao().getTimeInMillis()) : null);
 			stmt.setLong(4, tarefa.getId());
 			stmt.execute();
 			stmt.close();
@@ -96,10 +96,18 @@ public class JdbcTarefaDao extends GenericDao<Tarefa> {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public void finaliza(Tarefa tarefa) {
+		tarefa.setFinalizado(true);
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.HOUR_OF_DAY, 0);
+		tarefa.setDataFinalizacao(c);
+		altera(tarefa);
+	}
 
 	@Override
 	public Tarefa busca(Long id) {
-		String sql = "select * from contatos where id = ?";
+		String sql = "select * from tarefa where id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setLong(1, id);
@@ -112,10 +120,12 @@ public class JdbcTarefaDao extends GenericDao<Tarefa> {
 				tarefa.setFinalizado(rs.getBoolean("finalizado"));
 
 				Date date = rs.getDate("dataFinalizacao");
-				Calendar df = Calendar.getInstance();
-				df.setTime(date);
+				if (null != date) {
+					Calendar df = Calendar.getInstance();
+					df.setTime(date);
 
-				tarefa.setDataFinalizacao(df);
+					tarefa.setDataFinalizacao(df);
+				}
 				return tarefa;
 			}
 		} catch (SQLException ex) {
