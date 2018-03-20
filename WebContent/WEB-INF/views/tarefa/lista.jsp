@@ -21,21 +21,20 @@
 				<td>${tarefa.id}</td>
 				<td>${tarefa.descricao}</td>
 				<c:if test="${tarefa.finalizado eq false}">
-					<td>Não finalizado</td>
+					<td id="tarefa_${ tarefa.id }">Não finalizado</td>
 				</c:if>
 				<c:if test="${tarefa.finalizado eq true}">
-					<td>Finalizado</td>
+					<td id="tarefa_${ tarefa.id }">Finalizado</td>
 				</c:if>
 				<td><fmt:formatDate value="${tarefa.dataFinalizacao.time}"
 						pattern="dd/MM/yyyy" /></td>
-				<c:choose>
-				<c:when test="${tarefa.finalizado eq false}">
-					<td id="tarefa_${ tarefa.id }"><a href="#" onclick="finalizaAgora(${ tarefa.id })">Finalizar agora!</a></td>
-				</c:when>
-				<c:otherwise>
-					<td></td>
-				</c:otherwise>
-				</c:choose>
+				<td>
+					<a href="mostraTarefa?id=${ tarefa.id }" >Alterar</a>
+					<a href="removeTarefa?id=${ tarefa.id }" >Remover</a>
+				<c:if test="${tarefa.finalizado eq false}">
+					<a href="#" onclick="finalizaAgora(${ tarefa.id })">Finalizar agora!</a>
+				</c:if>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>

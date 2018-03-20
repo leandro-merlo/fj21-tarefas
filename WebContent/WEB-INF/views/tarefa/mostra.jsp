@@ -13,13 +13,15 @@
 	$.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] );
 </script>
 </head>
+
+<fmt:formatDate value="${tarefa.dataFinalizacao.time}" var="date" pattern="dd/MM/yyyy"/>
 <body>
 	<h3>Alterar tarefa - ${tarefa.id}</h3>
 	<form action="alteraTarefa" method="post">
 		<input type="hidden" name="id" value="${tarefa.id}" /> Descrição:<br />
 		<textarea name="descricao" cols="100" rows="5">${tarefa.descricao}</textarea>
 		<br /> Finalizado? <input type="checkbox" name="finalizado" value="true" ${tarefa.finalizado? 'checked' : '' } /> 
-		<br /> Data de finalização: <br /> <tags:campoData id="dataFinalizacao" value="${tarefa.dataFinalizacao.time}" />
+		<br /> Data de finalização: <br /> <tags:campoData id="dataFinalizacao" value="${date}" />
 		<br /> <input type="submit" value="Alterar" />
 	</form>
 </body>

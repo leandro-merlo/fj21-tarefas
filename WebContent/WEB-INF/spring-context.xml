@@ -12,6 +12,9 @@
 			
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
+	<mvc:interceptors>
+		<bean class="br.com.manzatech.tarefas.interceptors.AutorizadorInterceptor" />
+	</mvc:interceptors>
 	<context:component-scan base-package="br.com.manzatech.tarefas" />
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />

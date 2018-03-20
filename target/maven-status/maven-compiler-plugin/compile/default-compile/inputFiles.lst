@@ -1,5 +1,9 @@
 C:\Users\Leandro\eclipse-workspace\fj21-tarefas\src\main\java\br\com\manzatech\tarefas\database\jdbc\dao\GenericDao.java
+C:\Users\Leandro\eclipse-workspace\fj21-tarefas\src\main\java\br\com\manzatech\tarefas\database\jdbc\dao\JdbcUsuarioDao.java
+C:\Users\Leandro\eclipse-workspace\fj21-tarefas\src\main\java\br\com\manzatech\tarefas\interceptors\AutorizadorInterceptor.java
 C:\Users\Leandro\eclipse-workspace\fj21-tarefas\src\main\java\br\com\manzatech\tarefas\controllers\OlaMundoController.java
+C:\Users\Leandro\eclipse-workspace\fj21-tarefas\src\main\java\br\com\manzatech\tarefas\models\Usuario.java
+C:\Users\Leandro\eclipse-workspace\fj21-tarefas\src\main\java\br\com\manzatech\tarefas\controllers\LoginController.java
 C:\Users\Leandro\eclipse-workspace\fj21-tarefas\src\main\java\br\com\manzatech\tarefas\database\jdbc\ConnectionFactory.java
 C:\Users\Leandro\eclipse-workspace\fj21-tarefas\src\main\java\br\com\manzatech\tarefas\database\jdbc\dao\JdbcTarefaDao.java
 C:\Users\Leandro\eclipse-workspace\fj21-tarefas\src\main\java\br\com\manzatech\tarefas\models\Tarefa.java
