@@ -1,17 +1,22 @@
 package br.com.manzatech.tarefas.database.jdbc.dao;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
-import br.com.manzatech.tarefas.database.jdbc.ConnectionFactory;
+import javax.sql.DataSource;
 
 public abstract class GenericDao<E> {
 
 
 		protected Connection conn;
 		
-		public GenericDao() {
-			this.conn = ConnectionFactory.getConnection();
+		public GenericDao(DataSource dataSource) {
+			try {
+				this.conn = dataSource.getConnection();
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
 		}
 		
 		public abstract Long adiciona(E entidade) ;

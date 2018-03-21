@@ -5,9 +5,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import br.com.manzatech.tarefas.models.Usuario;
 
+@Repository
 public class JdbcUsuarioDao extends GenericDao<Usuario> {
+
+	@Autowired
+	public JdbcUsuarioDao(DataSource dataSource) {
+		super(dataSource);
+	}
 
 	@Override
 	public Long adiciona(Usuario entidade) {

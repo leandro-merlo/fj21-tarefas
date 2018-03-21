@@ -4,18 +4,22 @@
 <head>
 <title>Listar tarefa</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<link type="text/css" rel="stylesheet" href="<c:url value='/resources/css/lista.css' />">
 </head>
 <body>
 	<a href="novaTarefa">Criar nova tarefa</a>
 	<br />
 	<br />
 	<table>
-		<tr>
-			<th>Id</th>
-			<th>Descrição</th>
-			<th>Finalizado?</th>
-			<th>Data de finalização</th>
-		</tr>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Descrição</th>
+				<th>Finalizado?</th>
+				<th>Data de finalização</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
 		<c:forEach items="${tarefas}" var="tarefa">
 			<tr>
 				<td>${tarefa.id}</td>

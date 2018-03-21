@@ -8,11 +8,23 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Qualifier;
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.mysql.cj.api.jdbc.Statement;
 
 import br.com.manzatech.tarefas.models.Tarefa;
 
+@Repository
 public class JdbcTarefaDao extends GenericDao<Tarefa> {
+
+	@Autowired
+	public JdbcTarefaDao(DataSource dataSource) {
+		super(dataSource);
+	}
 
 	@Override
 	public Long adiciona(Tarefa tarefa) {
